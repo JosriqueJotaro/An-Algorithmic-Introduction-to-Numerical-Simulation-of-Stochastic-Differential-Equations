@@ -1,4 +1,5 @@
-%EMSTRONG  Test strong convergence of Euler-Maruyama
+% EMSTRONG  Test strong convergence of Euler-Maruyama
+% Listing 6
 %
 % Solves    dX = lambda*X dt + mu*X dW,   X(0) = Xzero,
 %         where lambda = 2, mu = 1 and Xzer0 = 1.

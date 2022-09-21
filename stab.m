@@ -1,4 +1,5 @@
-%STAB  Mean-square and asymptotic stability test for E-M
+% STAB  Mean-square and asymptotic stability test for E-M
+% Listing 9
 %
 % SDE is  dX = lambda*X dt + mu*X dW,   X(0) = Xzero,
 %      where lambda and mu are constants and Xzero = 1.

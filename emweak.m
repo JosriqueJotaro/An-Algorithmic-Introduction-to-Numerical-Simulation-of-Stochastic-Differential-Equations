@@ -1,4 +1,5 @@
-%EMWEAK  Test weak convergence of Euler-Maruyama
+% EMWEAK  Test weak convergence of Euler-Maruyama
+% Listing 7
 %
 % Solves    dX = lambda*X dt + mu*X dW,   X(0) = Xzero,
 %        where lambda = 2, mu = 0.1 and Xzer0 = 1.
@@ -36,7 +37,7 @@ for p = 1:5
 end
 Xerr = abs(Xem - exp(lambda));
 
-Dtvals = 2.^(1:5-10);          
+Dtvals = 2.^((1:5)-10);          
 
 % top RH picture
 subplot(222)                             

@@ -1,4 +1,5 @@
-%BPATH1  Brownian path simulation
+% BPATH1  Brownian path simulation
+% Listing 1
 
 % set the state of randn
 rng(100,'v5normal');

@@ -1,4 +1,5 @@
-%BPATH2  Brownian path simulation: vectorized 
+% BPATH2  Brownian path simulation: vectorized
+% Listing 2
 
 % set the state of randn
 rng(100,'v5normal');

@@ -1,4 +1,5 @@
-%BPATH3  Function along a Brownian path
+% BPATH3  Function along a Brownian path
+% Listing 3
 
 % set the state of randn
 rng(100,'v5normal');

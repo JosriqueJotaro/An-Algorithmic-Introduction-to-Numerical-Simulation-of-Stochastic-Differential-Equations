@@ -1,4 +1,5 @@
-%EM  Euler-Maruyama method on linear SDE
+% EM  Euler-Maruyama method on linear SDE
+% Listing 5
 %
 % SDE is  dX = lambda*X dt + mu*X dW,   X(0) = Xzero,
 %      where lambda = 2, mu = 1 and Xzero = 1.
@@ -9,7 +10,7 @@
 rng(100,'v5normal');
 
 % problem parameters
-lambda = 2; mu = 1; Xzero = 1;    
+lambda = 1; mu = 1; Xzero = 1;    
 T = 1; N = 2^8; dt = T/N;       
 
 % Brownian increments
