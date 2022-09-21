@@ -18,7 +18,7 @@ for k = 1:3
            Xtemp = Xtemp + Dt*lambda*Xtemp + mu*Xtemp.*Winc;
            Xms(j) = mean(Xtemp.^2);     % mean-square estimate
     end
-    semilogy([0:Dt:T],[Xzero,Xms],ltype{k},'Linewidth',2), hold on
+    semilogy(0:Dt:T,[Xzero,Xms],ltype{k},'Linewidth',2), hold on
 end
 legend('\Delta t = 1','\Delta t = 1/2','\Delta t = 1/4')
 title('Mean-Square: \lambda = -3, \mu = \surd 3','FontSize',16)
@@ -36,7 +36,7 @@ for k = 1:3
            Xtemp = Xtemp + Dt*lambda*Xtemp + mu*Xtemp*Winc;
            Xemabs(j) = abs(Xtemp);
     end
-    semilogy([0:Dt:T],[Xzero,Xemabs],ltype{k},'Linewidth',2), hold on
+    semilogy(0:Dt:T,[Xzero,Xemabs],ltype{k},'Linewidth',2), hold on
 end
 legend('\Delta t = 1','\Delta t = 1/2','\Delta t = 1/4')
 title('Single Path: \lambda = 1/2, \mu = \surd 6','FontSize',16)

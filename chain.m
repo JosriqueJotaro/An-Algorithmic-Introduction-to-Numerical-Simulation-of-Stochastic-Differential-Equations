@@ -27,7 +27,7 @@ for j = 1:N
    Xem2(j) = Xtemp2;
 end
 
-plot([0:Dt:T],[sqrt([Xzero,abs(Xem1)])],'b-',[0:Dt:T],[Xzero,Xem2],'ro')
+plot(0:Dt:T,sqrt([Xzero,abs(Xem1)]),'b-',0:Dt:T,[Xzero,Xem2],'ro')
 legend('Direct Solution','Solution via Chain Rule','location','northwest')
 xlabel('t','FontSize',12) 
 ylabel('V(X)','FontSize',16,'Rotation',0,'HorizontalAlignment','right')

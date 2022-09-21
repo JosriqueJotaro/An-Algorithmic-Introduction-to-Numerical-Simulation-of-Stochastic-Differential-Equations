@@ -12,6 +12,6 @@ for j = 2:N
    W(j) = W(j-1) + dW(j); 
 end
 
-plot([0:dt:T],[0,W],'r-')    % plot W against t
+plot(0:dt:T,[0,W],'r-')    % plot W against t
 xlabel('t','FontSize',16) 
 ylabel('W(t)','FontSize',16,'Rotation',0)

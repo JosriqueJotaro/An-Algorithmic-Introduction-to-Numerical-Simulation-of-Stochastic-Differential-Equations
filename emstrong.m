@@ -13,7 +13,7 @@ T = 1; N = 2^9; dt = T/N;         %
 M = 1000;                         % number of paths sampled
 
 Xerr = zeros(M,5);                % preallocate array
-for s = 1:M,                      % sample over discrete Brownian paths
+for s = 1:M                       % sample over discrete Brownian paths
     dW = sqrt(dt)*randn(1,N);     % Brownian increments
     W = cumsum(dW);               % discrete Brownian path 
     Xtrue = Xzero*exp((lambda-0.5*mu^2)+mu*W(end));
@@ -28,7 +28,7 @@ for s = 1:M,                      % sample over discrete Brownian paths
     end
 end
 
-Dtvals = dt*(2.^([0:4]));               
+Dtvals = dt*(2.^(0:4));               
 subplot(221)                                  % top LH picture
 loglog(Dtvals,mean(Xerr),'b*-'), hold on
 loglog(Dtvals,(Dtvals.^(.5)),'r--'), hold off % reference slope of 1/2 

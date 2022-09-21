@@ -28,7 +28,7 @@ for p = 1:5                              % take various Euler timesteps
 end
 Xerr = abs(Xem - exp(lambda));
 
-Dtvals = 2.^([1:5]-10);          
+Dtvals = 2.^(1:5-10);          
 subplot(222)                             % top RH picture
 loglog(Dtvals,Xerr,'b*-'), hold on
 loglog(Dtvals,Dtvals,'r--'), hold off    % reference slope of 1

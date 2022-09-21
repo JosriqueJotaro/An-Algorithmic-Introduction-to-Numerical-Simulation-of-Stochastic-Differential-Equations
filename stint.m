@@ -8,7 +8,6 @@ T = 1; N = 500; dt = T/N;
 dW = sqrt(dt)*randn(1,N);               % increments
 W = cumsum(dW);                         % cumulative sum
 
-ito = sum([0,W(1:end-1)].*dW)    
 % suppress code analyzer message
 %#ok<*NOPTS>
 
