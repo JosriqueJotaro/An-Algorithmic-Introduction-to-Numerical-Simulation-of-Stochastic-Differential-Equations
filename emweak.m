@@ -11,27 +11,39 @@
 %
 % Uncommenting the line indicated below gives the weak E-M method.
 
-rng(100,'v5normal');                      
-lambda = 2; mu = 0.1; Xzero = 1; T = 1;  % problem parameters
-M = 50000;                               % number of paths sampled
+rng(100,'v5normal');                     
+% problem parameters
+lambda = 2; mu = 0.1; Xzero = 1; T = 1;  
 
-Xem = zeros(5,1);                        % preallocate arrays
-for p = 1:5                              % take various Euler timesteps
-       Dt = 2^(p-10); L = T/Dt;          % L Euler steps of size Dt 
-       Xtemp = Xzero*ones(M,1);            
-       for j = 1:L
-           Winc = sqrt(Dt)*randn(M,1);
-           % Winc = sqrt(Dt)*sign(randn(M,1)); %% use for weak E-M %%
-           Xtemp = Xtemp + Dt*lambda*Xtemp + mu*Xtemp.*Winc;
-       end
-       Xem(p) = mean(Xtemp);
+% number of paths sampled
+M = 50000;                               
+
+% preallocate arrays
+Xem = zeros(5,1);          
+
+% take various Euler timesteps
+for p = 1:5                 
+    % L Euler steps of size Dt 
+    Dt = 2^(p-10); L = T/Dt;          
+    Xtemp = Xzero*ones(M,1);            
+    for j = 1:L
+        Winc = sqrt(Dt)*randn(M,1);
+        
+        % Winc = sqrt(Dt)*sign(randn(M,1)); %% use for weak E-M %%
+        Xtemp = Xtemp + Dt*lambda*Xtemp + mu*Xtemp.*Winc;
+    end
+    Xem(p) = mean(Xtemp);
 end
 Xerr = abs(Xem - exp(lambda));
 
 Dtvals = 2.^(1:5-10);          
-subplot(222)                             % top RH picture
+
+% top RH picture
+subplot(222)                             
 loglog(Dtvals,Xerr,'b*-'), hold on
-loglog(Dtvals,Dtvals,'r--'), hold off    % reference slope of 1
+
+% reference slope of 1
+loglog(Dtvals,Dtvals,'r--'), hold off    
 axis([1e-3 1e-1 1e-4 1])
 xlabel('\Delta t'), ylabel('| E(X(T)) - Sample average of X_L |')
 title('emweak.m','FontSize',10)

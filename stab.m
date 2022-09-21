@@ -5,10 +5,14 @@
 
 rng(100,'v5normal');
 T = 20; M = 50000; Xzero = 1;          
-ltype = {'b-','r--','m-.'};             % linetypes for plot
+
+% linetypes for plot
+ltype = {'b-','r--','m-.'};             
 
 subplot(211)  %%%%%%%%%%%% Mean Square %%%%%%%%%%%%%
-lambda = -3; mu = sqrt(3);              % problem parameters
+
+% problem parameters
+lambda = -3; mu = sqrt(3);              
 for k = 1:3
     Dt = 2^(1-k);                      
     N = T/Dt;
@@ -16,7 +20,9 @@ for k = 1:3
     for j = 1:N
            Winc = sqrt(Dt)*randn(M,1);  
            Xtemp = Xtemp + Dt*lambda*Xtemp + mu*Xtemp.*Winc;
-           Xms(j) = mean(Xtemp.^2);     % mean-square estimate
+           
+           % mean-square estimate
+           Xms(j) = mean(Xtemp.^2);     
     end
     semilogy(0:Dt:T,[Xzero,Xms],ltype{k},'Linewidth',2), hold on
 end
@@ -25,8 +31,10 @@ title('Mean-Square: \lambda = -3, \mu = \surd 3','FontSize',16)
 ylabel('E[X^2]','FontSize',12), axis([0,T,1e-20,1e+20]), hold off
 
 subplot(212)  %%%%% Asymptotic: a single path %%%%%%%
+
+% problem parameters
 T = 500;
-lambda = 0.5; mu = sqrt(6);             % problem parameters
+lambda = 0.5; mu = sqrt(6);             
 for k = 1:3
     Dt = 2^(1-k);                     
     N = T/Dt;

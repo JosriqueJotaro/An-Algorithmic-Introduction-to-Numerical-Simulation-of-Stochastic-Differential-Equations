@@ -2,11 +2,15 @@
 %
 % Ito and Stratonovich integrals of W dW
 
-rng(100,'v5normal');                      % set the state of randn
+% set the state of randn
+rng(100,'v5normal');                      
 T = 1; N = 500; dt = T/N;
 
-dW = sqrt(dt)*randn(1,N);               % increments
-W = cumsum(dW);                         % cumulative sum
+% increments
+dW = sqrt(dt)*randn(1,N);               
+
+% cumulative sum
+W = cumsum(dW);                         
 
 % suppress code analyzer message
 %#ok<*NOPTS>

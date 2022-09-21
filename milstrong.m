@@ -10,32 +10,55 @@
 % Code is vectorized: all paths computed simultaneously.
 
 rng(100,'v5normal');
-r = 2; K = 1; beta = 0.25; Xzero = 0.5;   % problem parameters
-T = 1; N = 2^(11); dt = T/N;              %             
-M = 500;                                  % number of paths sampled
-R = [1; 16; 32; 64; 128];                 % Milstein stepsizes are R*dt
 
-dW = sqrt(dt)*randn(M,N);                 % Brownian increments
-Xmil = zeros(M,5);                        % preallocate array
+% problem parameters
+r = 2; K = 1; beta = 0.25; Xzero = 0.5;   
+T = 1; N = 2^(11); dt = T/N;
+
+% number of paths sampled             
+M = 500;                     
+
+% Milstein stepsizes are R*dt
+R = [1; 16; 32; 64; 128];                 
+
+% Brownian increments
+dW = sqrt(dt)*randn(M,N);
+
+% preallocate array
+Xmil = zeros(M,5);                        
 for p = 1:5                               
-     Dt = R(p)*dt; L = N/R(p);            % L timesteps of size Dt = R dt
-     Xtemp = Xzero*ones(M,1);
-     for j = 1:L
-          Winc = sum(dW(:,R(p)*(j-1)+1:R(p)*j),2);
-          Xtemp = Xtemp + Dt*r*Xtemp.*(K-Xtemp) + beta*Xtemp.*Winc ...
-              + 0.5*beta^2*Xtemp.*(Winc.^2 - Dt);
-     end
-     Xmil(:,p) = Xtemp;  % store Milstein solution at t =1
+    % L timesteps of size Dt = R dt
+    Dt = R(p)*dt; L = N/R(p);            
+    Xtemp = Xzero*ones(M,1);
+    
+    for j = 1:L
+        Winc = sum(dW(:,R(p)*(j-1)+1:R(p)*j),2);
+        Xtemp = Xtemp + Dt*r*Xtemp.*(K-Xtemp) + beta*Xtemp.*Winc ...
+          + 0.5*beta^2*Xtemp.*(Winc.^2 - Dt);
+    end
+    
+    % store Milstein solution at t =1
+    Xmil(:,p) = Xtemp;  
 end
 
-Xref = Xmil(:,1);                             % Reference solution
-Xerr = abs(Xmil(:,2:5) - repmat(Xref,1,4));   % Error in each path
-mean(Xerr);                                   % Mean pathwise errors
-Dtvals = dt*R(2:5);                           % Milstein timesteps used
+% Reference solution
+Xref = Xmil(:,1);   
 
-subplot(224)                                  % lower RH picture
+% Error in each path
+Xerr = abs(Xmil(:,2:5) - repmat(Xref,1,4));   
+
+% Mean pathwise errors
+mean(Xerr);                                   
+
+% Milstein timesteps used
+Dtvals = dt*R(2:5);                           
+
+% lower RH picture
+subplot(224)                                 
 loglog(Dtvals,mean(Xerr),'b*-'), hold on
-loglog(Dtvals,Dtvals,'r--'), hold off         % reference slope of 1
+
+% reference slope of 1
+loglog(Dtvals,Dtvals,'r--'), hold off         
 axis([1e-3 1e-1 1e-4 1])
 xlabel('\Delta t')
 ylabel('Sample average of | X(T) - X_L |')

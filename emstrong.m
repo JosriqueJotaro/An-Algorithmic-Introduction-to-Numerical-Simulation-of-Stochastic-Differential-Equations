@@ -8,30 +8,48 @@
 % Examine strong convergence at T=1:  E | X_L - X(T) |.
 
 rng(100,'v5normal');
-lambda = 2; mu = 1; Xzero = 1;    % problem parameters
-T = 1; N = 2^9; dt = T/N;         %
-M = 1000;                         % number of paths sampled
 
-Xerr = zeros(M,5);                % preallocate array
-for s = 1:M                       % sample over discrete Brownian paths
-    dW = sqrt(dt)*randn(1,N);     % Brownian increments
-    W = cumsum(dW);               % discrete Brownian path 
+% problem parameters
+lambda = 2; mu = 1; Xzero = 1;    
+T = 1; N = 2^9; dt = T/N;    
+
+% number of paths sampled
+M = 1000;                         
+
+% preallocate array
+Xerr = zeros(M,5);                
+
+% sample over discrete Brownian paths
+for s = 1:M                       
+    % Brownian increments
+    dW = sqrt(dt)*randn(1,N);    
+    
+    % discrete Brownian path 
+    W = cumsum(dW);               
     Xtrue = Xzero*exp((lambda-0.5*mu^2)+mu*W(end));
-    for p = 1:5                            
-        R = 2^(p-1); Dt = R*dt; L = N/R;     % L Euler steps of size Dt = R*dt
+    
+    for p = 1:5                       
+        % L Euler steps of size Dt = R*dt
+        R = 2^(p-1); Dt = R*dt; L = N/R;     
         Xtemp = Xzero;
         for j = 1:L
              Winc = sum(dW(R*(j-1)+1:R*j));
              Xtemp = Xtemp + Dt*lambda*Xtemp + mu*Xtemp*Winc;
         end
-        Xerr(s,p) = abs(Xtemp - Xtrue);      % store the error at t = 1
+        
+        % store the error at t = 1
+        Xerr(s,p) = abs(Xtemp - Xtrue);      
     end
 end
 
-Dtvals = dt*(2.^(0:4));               
-subplot(221)                                  % top LH picture
+Dtvals = dt*(2.^(0:4));           
+
+% top LH picture
+subplot(221)                                 
 loglog(Dtvals,mean(Xerr),'b*-'), hold on
-loglog(Dtvals,(Dtvals.^(.5)),'r--'), hold off % reference slope of 1/2 
+
+% reference slope of 1/2 
+loglog(Dtvals,(Dtvals.^(.5)),'r--'), hold off 
 axis([1e-3 1e-1 1e-4 1])
 xlabel('\Delta t'), ylabel('Sample average of | X(T) - X_L |')
 title('emstrong.m','FontSize',10)

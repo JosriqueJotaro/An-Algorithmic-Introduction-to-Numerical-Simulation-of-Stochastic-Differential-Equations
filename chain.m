@@ -9,22 +9,28 @@
 % Note: abs is used for safety inside sqrt, but has no effect in this case.
 
 rng(100,'v5normal');
-alpha = 2; beta = 1; T = 1; N = 200; dt = T/N;  % Problem parameters
-Xzero = 1; Xzero2 = sqrt(Xzero);                % 
 
-Dt = dt;                                        % EM steps of size Dt = dt
-Xem1 = zeros(1,N); Xem2 = zeros(1,N);           % preallocate for efficiency 
+% Problem parameters
+alpha = 2; beta = 1; T = 1; N = 200; dt = T/N;
+Xzero = 1; Xzero2 = sqrt(Xzero);
+
+% EM steps of size Dt = dt
+Dt = dt;                    
+
+% preallocate for efficiency
+Xem1 = zeros(1,N); Xem2 = zeros(1,N); 
 Xtemp1 = Xzero;  Xtemp2 = Xzero2;
+
 for j = 1:N
-   Winc = sqrt(dt)*randn;  
-   f1 = (alpha-Xtemp1);
-   g1 = beta*sqrt(abs(Xtemp1));
-   Xtemp1 = Xtemp1 + Dt*f1 + Winc*g1;
-   Xem1(j) = Xtemp1;
-   f2 = (4*alpha-beta^2)/(8*Xtemp2) - Xtemp2/2;
-   g2 = beta/2;
-   Xtemp2 = Xtemp2 + Dt*f2 + Winc*g2;
-   Xem2(j) = Xtemp2;
+    Winc = sqrt(dt)*randn;  
+    f1 = (alpha-Xtemp1);
+    g1 = beta*sqrt(abs(Xtemp1));
+    Xtemp1 = Xtemp1 + Dt*f1 + Winc*g1;
+    Xem1(j) = Xtemp1;
+    f2 = (4*alpha-beta^2)/(8*Xtemp2) - Xtemp2/2;
+    g2 = beta/2;
+    Xtemp2 = Xtemp2 + Dt*f2 + Winc*g2;
+    Xem2(j) = Xtemp2;
 end
 
 plot(0:Dt:T,sqrt([Xzero,abs(Xem1)]),'b-',0:Dt:T,[Xzero,Xem2],'ro')
