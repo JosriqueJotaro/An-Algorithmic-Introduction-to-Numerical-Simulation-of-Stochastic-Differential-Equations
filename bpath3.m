@@ -12,6 +12,7 @@ plot([0,t],[1,Umean],'b-'), hold on               % plot mean over M paths
 plot([0,t],[ones(5,1),U(1:5,:)],'r--'), hold off  % plot 5 individual paths
 xlabel('t','FontSize',16)
 ylabel('U(t)','FontSize',16,'Rotation',0,'HorizontalAlignment','right')
+legend('mean of 1000 paths','5 individual paths','location','northwest')
 
 % suppress code analyzer message
 %#ok<*NOPTS>
