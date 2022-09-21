@@ -1,7 +1,7 @@
 %BPATH3  Function along a Brownian path
 
-randn('state',100)                                % set the state of randn
-T = 1; N = 500; dt = T/N; t = [dt:dt:1];
+rng(100,'v5normal');                                % set the state of randn
+T = 1; N = 500; dt = T/N; t = dt:dt:1;
 
 M = 1000;                                         % M paths simultaneously
 dW = sqrt(dt)*randn(M,N);                         % increments

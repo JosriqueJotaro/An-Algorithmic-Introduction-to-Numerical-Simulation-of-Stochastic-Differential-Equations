@@ -7,7 +7,7 @@
 % E-M uses 5 different timesteps: 16dt, 8dt, 4dt, 2dt, dt.
 % Examine strong convergence at T=1:  E | X_L - X(T) |.
 
-randn('state',100)
+rng(100,'v5normal');
 lambda = 2; mu = 1; Xzero = 1;    % problem parameters
 T = 1; N = 2^9; dt = T/N;         %
 M = 1000;                         % number of paths sampled

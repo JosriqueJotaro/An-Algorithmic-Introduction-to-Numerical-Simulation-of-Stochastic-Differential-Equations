@@ -11,7 +11,7 @@
 %
 % Uncommenting the line indicated below gives the weak E-M method.
 
-randn('state',100);                      
+rng(100,'v5normal');                      
 lambda = 2; mu = 0.1; Xzero = 1; T = 1;  % problem parameters
 M = 50000;                               % number of paths sampled
 

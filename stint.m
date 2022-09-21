@@ -2,7 +2,7 @@
 %
 % Ito and Stratonovich integrals of W dW
 
-randn('state',100)                      % set the state of randn
+rng(100,'v5normal');                      % set the state of randn
 T = 1; N = 500; dt = T/N;
 
 dW = sqrt(dt)*randn(1,N);               % increments

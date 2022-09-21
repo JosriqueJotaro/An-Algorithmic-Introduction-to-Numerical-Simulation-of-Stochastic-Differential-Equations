@@ -9,7 +9,7 @@
 % Examines strong convergence at T=1:  E | X_L - X(T) |.
 % Code is vectorized: all paths computed simultaneously.
 
-randn('state',100)
+rng(100,'v5normal');
 r = 2; K = 1; beta = 0.25; Xzero = 0.5;   % problem parameters
 T = 1; N = 2^(11); dt = T/N;              %             
 M = 500;                                  % number of paths sampled

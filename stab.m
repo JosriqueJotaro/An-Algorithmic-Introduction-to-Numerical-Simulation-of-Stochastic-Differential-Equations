@@ -3,7 +3,7 @@
 % SDE is  dX = lambda*X dt + mu*X dW,   X(0) = Xzero,
 %      where lambda and mu are constants and Xzero = 1.
 
-randn('state',100)
+rng(100,'v5normal');
 T = 20; M = 50000; Xzero = 1;          
 ltype = {'b-','r--','m-.'};             % linetypes for plot
 

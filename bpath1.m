@@ -1,6 +1,6 @@
 %BPATH1  Brownian path simulation
 
-randn('state',100)           % set the state of randn
+rng(100,'v5normal');           % set the state of randn
 T = 1; N = 500; dt = T/N;
 dW = zeros(1,N);             % preallocate arrays ...
 W = zeros(1,N);              % for efficiency

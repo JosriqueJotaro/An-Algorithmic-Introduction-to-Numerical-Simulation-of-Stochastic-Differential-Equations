@@ -6,7 +6,7 @@
 % Discretized Brownian path over [0,1] has dt = 2^(-8).
 % Euler-Maruyama uses timestep R*dt.
 
-randn('state',100)
+rng(100,'v5normal');
 lambda = 2; mu = 1; Xzero = 1;    % problem parameters
 T = 1; N = 2^8; dt = T/N;         
 dW = sqrt(dt)*randn(1,N);         % Brownian increments
