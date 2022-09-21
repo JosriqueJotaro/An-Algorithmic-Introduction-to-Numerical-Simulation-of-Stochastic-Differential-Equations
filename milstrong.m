@@ -41,6 +41,9 @@ xlabel('\Delta t')
 ylabel('Sample average of | X(T) - X_L |')
 title('milstrong.m','FontSize',10)
 
+% suppress code analyzer message
+%#ok<*NOPTS>
+
 %%%% Least squares fit of error = C * Dt^q %%%%
 A = [ones(4,1), log(Dtvals)]; rhs = log(mean(Xerr)');
 sol = A\rhs; q = sol(2)

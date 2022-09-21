@@ -36,6 +36,9 @@ axis([1e-3 1e-1 1e-4 1])
 xlabel('\Delta t'), ylabel('| E(X(T)) - Sample average of X_L |')
 title('emweak.m','FontSize',10)
 
+% suppress code analyzer message
+%#ok<*NOPTS>
+
 %%%% Least squares fit of error = C * dt^q %%%%
 A = [ones(p,1), log(Dtvals)']; rhs = log(Xerr);
 sol = A\rhs; q = sol(2)

@@ -28,4 +28,7 @@ plot([0:Dt:T],[Xzero,Xem],'r--*'), hold off
 xlabel('t','FontSize',12)
 ylabel('X','FontSize',16,'Rotation',0,'HorizontalAlignment','right')
 
+% suppress code analyzer message
+%#ok<*NOPTS>
+
 emerr = abs(Xem(end)-Xtrue(end))

@@ -33,4 +33,7 @@ legend('Direct Solution','Solution via Chain Rule','location','northwest')
 xlabel('t','FontSize',12) 
 ylabel('V(X)','FontSize',16,'Rotation',0,'HorizontalAlignment','right')
 
+% suppress code analyzer message
+%#ok<*NOPTS>
+
 Xdiff = norm(sqrt(Xem1) - Xem2,'inf')

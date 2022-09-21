@@ -13,4 +13,7 @@ plot([0,t],[ones(5,1),U(1:5,:)],'r--'), hold off  % plot 5 individual paths
 xlabel('t','FontSize',16)
 ylabel('U(t)','FontSize',16,'Rotation',0,'HorizontalAlignment','right')
 
+% suppress code analyzer message
+%#ok<*NOPTS>
+
 averr = norm((Umean - exp(9*t/8)),'inf')          % sample error

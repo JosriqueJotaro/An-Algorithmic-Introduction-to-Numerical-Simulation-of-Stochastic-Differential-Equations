@@ -36,6 +36,9 @@ axis([1e-3 1e-1 1e-4 1])
 xlabel('\Delta t'), ylabel('Sample average of | X(T) - X_L |')
 title('emstrong.m','FontSize',10)
 
+% suppress code analyzer message
+%#ok<*NOPTS>
+
 %%%% Least squares fit of error = C * Dt^q %%%%
 A = [ones(5,1), log(Dtvals)']; rhs = log(mean(Xerr)');
 sol = A\rhs; q = sol(2)
