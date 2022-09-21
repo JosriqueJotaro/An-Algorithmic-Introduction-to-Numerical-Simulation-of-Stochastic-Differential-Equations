@@ -8,7 +8,6 @@
 % Hence, we compare sqrt(Xem1) and Xem2.
 % Note: abs is used for safety inside sqrt, but has no effect in this case.
 
-randn('state',100)
 rng(100,'v5normal');
 alpha = 2; beta = 1; T = 1; N = 200; dt = T/N;  % Problem parameters
 Xzero = 1; Xzero2 = sqrt(Xzero);                % 
