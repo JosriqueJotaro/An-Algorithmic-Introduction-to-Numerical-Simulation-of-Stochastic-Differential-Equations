@@ -29,6 +29,7 @@ end
 
 plot([0:Dt:T],[sqrt([Xzero,abs(Xem1)])],'b-',[0:Dt:T],[Xzero,Xem2],'ro')
 legend('Direct Solution','Solution via Chain Rule',2)
+legend('Direct Solution','Solution via Chain Rule','location','northwest')
 xlabel('t','FontSize',12) 
 ylabel('V(X)','FontSize',16,'Rotation',0,'HorizontalAlignment','right')
 
